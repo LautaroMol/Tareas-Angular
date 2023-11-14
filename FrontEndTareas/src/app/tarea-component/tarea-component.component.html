@@ -1,0 +1,15 @@
+<ng-container *ngIf="tarea">
+    <div class="card border shadow mb-3" [ngClass]="{'finalizada': tarea.estado === 'finalizada', 'en-curso': tarea.estado === 'en curso', 'vencida': tarea.estado === 'vencida'}">
+      <div class="card-header text-white" (click)="toggleDetails()">
+        <div class="nombre-tarea" [ngClass]="{'finalizada': tarea.estado === 'finalizada', 'en-curso': tarea.estado === 'en curso', 'vencida': tarea.estado === 'vencida'}">
+          <div style="font-size: 18px; font-weight: bold;">{{ tarea.nombreTarea }}</div>
+        </div>
+      </div>
+      <div class="card-body" [@detallesAnimation]="mostrarDetalles ? 'activo' : 'inactivo'">
+        <h5 class="card-title">{{ tarea.estado }} card title</h5>
+        <p class="card-text">{{ tarea.descripcion }}</p>
+        <p class="card-text">Fecha Límite: {{ tarea.fechaLimite | date:'medium' }}</p>
+      </div>
+    </div>
+  </ng-container>
+  
