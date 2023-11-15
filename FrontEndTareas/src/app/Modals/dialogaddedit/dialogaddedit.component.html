@@ -7,7 +7,28 @@
                     <mat-label>Nombre de la tarea: </mat-label>
                     <input matInput formControlName="nombreTarea" autocomplete="off">
                 </mat-form-field>
-            </mat-grid-tile>
-        </mat-grid-list>
+            </mat-grid-tile> 
+        <mat-grid-tile>
+        <mat-form-field appearance="outline">
+            <mat-label>Descripcion de la tarea: </mat-label>
+            <input matInput formControlName="descripcionTarea" autocomplete="off">
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-form-field appearance="outline">
+            <mat-label>Fecha limite: </mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fechaLimite">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </mat-grid-tile>
+    </mat-grid-list>
     </form>
 </div>
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">cancelar</button>
+    <button mat-raised-button mat-dialog color="primary" (click)="addEditTarea()"
+    [disabled]="formTarea.invalid">
+    {{botonAccion}}
+    </button>
+</mat-dialog-actions>

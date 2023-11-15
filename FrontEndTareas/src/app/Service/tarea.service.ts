@@ -3,11 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import {Observable} from 'rxjs';
 import { Tarea } from '../Interface/tarea';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TareaService {
+  private listaTareasSource = new BehaviorSubject<Tarea[]>([]);
+  listaTareas$ = this.listaTareasSource.asObservable();
 
   private endPoint: string = environment.endPoint;
   private apiUrl:string = this.endPoint + "tarea/"
@@ -23,5 +26,8 @@ export class TareaService {
   }
   delete(idTarea:Number):Observable<void>{
     return this.http.delete<void>(`${this.apiUrl}eliminar/${idTarea}`);
+  }
+  actualizarListaTareas(tareas: Tarea[]) {
+    this.listaTareasSource.next(tareas);
   }
 }

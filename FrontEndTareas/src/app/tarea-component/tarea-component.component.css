@@ -48,10 +48,17 @@
   color: white;
 }
 
+.fecha-limite {
+  font-weight: normal; /* Restablece el peso de la fuente a normal */
+}
+
 .card-body {
-  font-size: 16px;
-  width: 100%; /* Asegura que el cuerpo tenga el mismo ancho que el título */
-  box-sizing: border-box;
+  font-size: 18px; /* Ajusta el tamaño de fuente del cuerpo de la tarjeta */
+}
+
+/* Formato de fecha */
+.fecha-limite {
+  font-weight: normal; /* Restablece el peso de la fuente a normal */
 }
 
 /* Animación */

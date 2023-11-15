@@ -1,4 +1,6 @@
-﻿namespace BackEndTareas.DTOs
+﻿using System.Text.Json.Serialization;
+
+namespace BackEndTareas.DTOs
 {
     public class TareaDTO
     {

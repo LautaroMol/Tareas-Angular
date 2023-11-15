@@ -1,6 +1,19 @@
+<!-- vista-principal.component.html -->
+
 <div>
-  <!-- vista-principal.component.html -->
-<div *ngFor="let tarea of listaTareas">
-  <app-tarea-component [tarea]="tarea"></app-tarea-component>
-</div>
+  <!-- Botón para crear nueva tarea -->
+  <button mat-fab color="primary" (click)="crearNuevaTarea()">
+    <mat-icon>assignment</mat-icon>
+  </button>
+  <!-- Filtro por nombre de tarea -->
+  <mat-form-field appearance="fill">
+    <mat-label>Buscador</mat-label>
+    <input matInput [(ngModel)]="filtroNombre" placeholder="Nombre de la Tarea">
+  </mat-form-field>
+
+
+  <!-- Lista de tareas filtrada por nombre -->
+  <div *ngFor="let tarea of listaTareas | filtroPorNombre:filtroNombre">
+    <app-tarea-component [tarea]="tarea"></app-tarea-component>
+  </div>
 </div>

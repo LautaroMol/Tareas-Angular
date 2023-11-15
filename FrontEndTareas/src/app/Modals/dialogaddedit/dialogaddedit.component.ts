@@ -40,12 +40,11 @@ export class DialogaddeditComponent {
         nombreTarea:['',Validators.required],
         descripcionTarea:['',Validators.required],
         fechaLimite: ['',Validators.required],
-        estadoTarea:['',Validators.required]
       });
 
       this._tareaServicio.getList().subscribe({
         next:(data) => {
-          this.listaTareas = data
+          this.listaTareas = data;
         },error:(e) =>{}
       })
     }
@@ -63,8 +62,8 @@ export class DialogaddeditComponent {
         idTarea: 0,
         nombreTarea: this.formTarea.value.nombreTarea,
         descripcion: this.formTarea.value.descripcionTarea,
-        fechaLimite: moment(this.formTarea.value.fechaLimite).format("DD/MM/YYYY"),
-        estado: this.formTarea.value.estadoTarea,
+        fechaLimite: moment(this.formTarea.value.fechaLimite).toISOString(),
+        estado: "en curso",
       }
       if(this.dataTarea == null){
         this._tareaServicio.add(modelo).subscribe({
@@ -76,10 +75,12 @@ export class DialogaddeditComponent {
           }
         })
       }else{
+        modelo.idTarea = this.dataTarea.idTarea;
+        modelo.estado = this.dataTarea.estado;
         this._tareaServicio.update(this.dataTarea.idTarea, modelo).subscribe({
           next:(data) => {
             this.MostrarAlerta("Tarea creada","listo");
-            this.dialogoReferencia.close("Aztualizado");
+            this.dialogoReferencia.close("Actualizado");
           },error:(e) => {
             this.MostrarAlerta("No se pudo crear la Tarea","Error");
           }
