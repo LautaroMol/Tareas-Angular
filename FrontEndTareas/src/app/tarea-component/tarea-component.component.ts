@@ -1,6 +1,10 @@
 import { Component,Input } from '@angular/core';
 import { Tarea } from '../Interface/tarea';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { DialogaddeditComponent } from '../Modals/dialogaddedit/dialogaddedit.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 
 @Component({
@@ -28,9 +32,13 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       transition('inactivo <=> activo', animate('300ms ease-in-out')),
     ]),
   ],
+  
 })
 export class TareaComponentComponent {
-  constructor() {
+  constructor(
+    public dialog: MatDialog,
+    matCard: MatCardModule,
+  ) {
     this.tarea = {} as Tarea;
   }
   
@@ -40,4 +48,14 @@ export class TareaComponentComponent {
   toggleDetails() {
     this.mostrarDetalles = !this.mostrarDetalles;
   }
+
+  editarTarea(dataTarea: Tarea){
+    this.dialog.open(DialogaddeditComponent,{disableClose: true, width:"350px",
+  data: dataTarea})
+  .afterClosed();
+  }
+  borrarTarea(dataTarea: Tarea){
+    console.log("se apreto eliminar");
+  }
+
 }

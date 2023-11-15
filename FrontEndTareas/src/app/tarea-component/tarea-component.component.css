@@ -1,48 +1,69 @@
 .card {
-    max-width: 18rem;
-    margin: 5px;
-    border-radius: 10px; /* Añadido para redondear los bordes */
+  max-width: 36rem;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+
+.finalizada {
+  background-color: #dcedc8;
+  border: 1px solid #a5d6a7;
+}
+
+.en-curso {
+  background-color: #bbdefb;
+  border: 1px solid #64b5f6;
+}
+
+.vencida {
+  background-color: #ffcdd2;
+  border: 1px solid #ef9a9a;
+}
+
+.nombre-tarea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 22px;
+  font-weight: bold;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.nombre-tarea.finalizada {
+  background-color: #4caf50;
+  color: white;
+}
+
+.nombre-tarea.en-curso {
+  background-color: #2196f3;
+  color: white;
+}
+
+.nombre-tarea.vencida {
+  background-color: #f44336;
+  color: white;
+}
+
+.card-body {
+  font-size: 16px;
+  width: 100%; /* Asegura que el cuerpo tenga el mismo ancho que el título */
+  box-sizing: border-box;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .finalizada {
-    background-color: #dcedc8; /* Verde más claro y suave */
-    border: 1px solid #a5d6a7;
+  to {
+    opacity: 1;
   }
-  
-  .en-curso {
-    background-color: #bbdefb; /* Celeste más claro y suave */
-    border: 1px solid #64b5f6;
-  }
-  
-  .vencida {
-    background-color: #ffcdd2; /* Rojo más claro y suave */
-    border: 1px solid #ef9a9a;
-  }
-  .nombre-tarea {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    width: 300px; /* Ancho fijo para el contenedor del nombre */
-    box-sizing: border-box;
-    overflow: hidden; /* Evita que el texto se desborde si es más largo que el ancho fijo */
-  }
-  
-  .nombre-tarea.finalizada {
-    background-color: #4caf50; /* Verde para tareas finalizadas */
-    color: white; /* Texto en blanco */
-  }
-  
-  .nombre-tarea.en-curso {
-    background-color: #2196f3; /* Azul para tareas en curso */
-    color: white; /* Texto en blanco */
-  }
-  
-  .nombre-tarea.vencida {
-    background-color: #f44336; /* Rojo para tareas vencidas */
-    color: white; /* Texto en blanco */
-  }
-  
+}
+
+.detalles-animacion {
+  animation: fadeIn 0.5s ease-in-out;
+}

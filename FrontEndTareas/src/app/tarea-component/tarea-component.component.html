@@ -2,14 +2,18 @@
     <div class="card border shadow mb-3" [ngClass]="{'finalizada': tarea.estado === 'finalizada', 'en-curso': tarea.estado === 'en curso', 'vencida': tarea.estado === 'vencida'}">
       <div class="card-header text-white" (click)="toggleDetails()">
         <div class="nombre-tarea" [ngClass]="{'finalizada': tarea.estado === 'finalizada', 'en-curso': tarea.estado === 'en curso', 'vencida': tarea.estado === 'vencida'}">
-          <div style="font-size: 18px; font-weight: bold;">{{ tarea.nombreTarea }}</div>
+          <div style="font-size: 22px; font-weight: bold; width: 400px;">{{ tarea.nombreTarea }}</div>
         </div>
       </div>
-      <div class="card-body" [@detallesAnimation]="mostrarDetalles ? 'activo' : 'inactivo'">
-        <h5 class="card-title">{{ tarea.estado }} card title</h5>
-        <p class="card-text">{{ tarea.descripcion }}</p>
+      <div class="card-body " [@detallesAnimation]="mostrarDetalles ? 'activo' : 'inactivo' " >
+        <h5 class="card-title">Estado de la Tarea: {{ tarea.estado }}</h5>
+        <p class="card-text">Descripcion de la Tarea: {{ tarea.descripcion }}</p>
         <p class="card-text">Fecha Límite: {{ tarea.fechaLimite | date:'medium' }}</p>
       </div>
+      <mat-card-actions align="end" *ngIf="mostrarDetalles">
+        <button mat-button color="primary" (click)="editarTarea(tarea)">Editar</button>
+        <button mat-button color="warn" (click)="borrarTarea(tarea)">Borrar</button>
+      </mat-card-actions>
     </div>
   </ng-container>
   

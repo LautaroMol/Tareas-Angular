@@ -1,0 +1,13 @@
+<h2 mat-dialog-title> {{tituloAccion}} Tarea</h2>
+<div mat-dialog-content>
+    <form [formGroup]="formTarea">
+        <mat-grid-list cols="1" rowHeight="80px">
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre de la tarea: </mat-label>
+                    <input matInput formControlName="nombreTarea" autocomplete="off">
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </form>
+</div>
